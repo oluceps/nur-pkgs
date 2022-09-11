@@ -1,4 +1,15 @@
-{ lib, stdenv, fetchFromGitHub, rustPlatform, pkg-config, openssl, alsa-lib, ffmpeg,  llvmPackages_latest, libclang}:
+{ lib
+, stdenv
+, fetchFromGitHub
+, rustPlatform
+, pkg-config
+, openssl
+, alsa-lib
+, ffmpeg
+, llvmPackages_latest
+, libclang
+, libllvm
+}:
 
 rustPlatform.buildRustPackage rec {
   pname = "RustPlayer";
@@ -10,11 +21,12 @@ rustPlatform.buildRustPackage rec {
     repo = pname;
     sha256 = "sha256-lmVdqc9SlDndMDlgY8ULRSUdQRV1mW5p2uz14eShF+k=";
   };
-
+  LIBCLANG_PATH = "${llvmPackages_latest.libclang.lib}/lib";
   cargoSha256 = "sha256-4CplfS8JVLKzsJjT/FdQLa4WXhB2Z2yYz855xDXrMNs=";
-
-  nativeBuildInputs = [ pkg-config ];
-  buildInputs = [ alsa-lib openssl ffmpeg llvmPackages_latest.llvm libclang];
+  nativeBuildInputs = [ pkg-config llvmPackages_latest.clang ];
+  buildInputs = [ alsa-lib openssl ffmpeg ];
+  # network required
+  doCheck = false;
 
   meta = with lib; {
     homepage = "https://github.com/Kingtous/RustPlayer";

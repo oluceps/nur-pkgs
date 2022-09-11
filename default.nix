@@ -15,6 +15,7 @@
   overlays = import ./overlays; # nixpkgs overlays
 
   Graphite-cursors = pkgs.callPackage ./pkgs/Graphite-cursors { };
+  rustplayer = pkgs.callPackage ./pkgs/RustPlayer { };
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
   # ...
 }
