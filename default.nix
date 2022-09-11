@@ -14,7 +14,7 @@
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
 
-  Graphite-cursor = pkgs.callPackage ./pkgs/Graphite-cursor { };
+  Graphite-cursors = pkgs.callPackage ./pkgs/Graphite-cursors { };
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
   # ...
 }
