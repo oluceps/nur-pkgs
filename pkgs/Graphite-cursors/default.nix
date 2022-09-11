@@ -28,6 +28,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/vinceliuice/Graphite-cursors";
     license = licenses.gpl3;
     platforms = platforms.all;
-    maintainers = with maintainers; [ oluceps ];
+#    maintainers = with maintainers; [ oluceps ];
   };
 }
