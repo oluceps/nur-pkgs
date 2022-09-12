@@ -11,17 +11,21 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-Kopl2NweYrq9rhw+0EUMhY/pfGo4g387927TZAhI5/A=";
   };
 
-  nativeBuildInputs = [ inkscape xcursorgen ];
+#  nativeBuildInputs = [ inkscape xcursorgen ];
 
-  buildPhase = ''
-    patchShebangs .
-    HOME=$TMP ./build.sh
-  '';
-
+ # buildPhase = ''
+#    patchShebangs .
+#    HOME=$TMP ./build.sh
+#  '';
+#
   installPhase = ''
     install -dm 755 $out/share/icons
-    cp -dr --no-preserve='ownership' dist{-dark{,-nord},-light{,-nord}} $out/share/icons/
-  '';
+    # cp -dr --no-preserve='ownership' dist{-dark{,-nord},-light{,-nord}} $out/share/icons/
+    mv dist-dark $out/share/icons/Graphite-dark
+    mv dist-light $out/share/icons/Graphite-light
+    mv dist-dark-nord $out/share/icons/Graphite-dark-nord
+    mv dist-light-nord $out/share/icons/Graphite-light-nord
+    '';
 
   meta = with lib; {
     description = "Graphite cursor theme";
