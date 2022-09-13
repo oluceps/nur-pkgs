@@ -1,6 +1,7 @@
 { stdenvNoCC
 , lib
 , fetchurl
+, unzip
 , ...
 } @ args:
 
@@ -8,13 +9,16 @@ stdenvNoCC.mkDerivation rec {
   pname = "oppo-sans";
   version = "0.1";
   src = fetchurl ({
-    url = "https://static01.coloros.com/www/public/img/topic7/font-opposans.zip?242";
-    sha256 = "MPrqqXwYX9Ij4h7jiOktTyxx52p17oVKt+ZowcH6d1M=";
+    url = "https://static01.coloros.com/www/public/img/topic7/font-opposans.zip";
+    sha256 = "sha256-YrH9EhoT6EIS+tzIAaGzl5J8nYIkNR9bS5O7y0KzrRQ=";
   });
+  
+  nativeBuildInputs = [ unzip ];
 
   installPhase = ''
     mkdir -p $out/share/fonts/{opentype,truetype}/
-    cp */*.otf $out/share/fonts/opentype/
-    cp */*.ttc $out/share/fonts/truetype/
+    find . -name '*.otf' -exec install -Dt $out/share/fonts/opentype {} \;
+    find . -name '*.ttf' -exec install -Dt $out/share/fonts/truetype {} \;
+    find . -name '*.ttc' -exec install -Dt $out/share/fonts/truetype {} \;
   '';
 }
