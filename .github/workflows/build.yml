@@ -35,8 +35,8 @@ jobs:
           - nur-pkgs
         nixPath:
           - nixpkgs=channel:nixos-unstable
-          - nixpkgs=channel:nixpkgs-unstable
-          - nixpkgs=channel:nixos-21.11
+ #         - nixpkgs=channel:nixpkgs-unstable
+  #        - nixpkgs=channel:nixos-21.11
     runs-on: self-hosted
     steps:
     - name: Checkout repository
