@@ -17,6 +17,7 @@
   Graphite-cursors = pkgs.callPackage ./pkgs/Graphite-cursors { };
   rustplayer = pkgs.callPackage ./pkgs/RustPlayer { };
   sing-box = pkgs.callPackage ./pkgs/sing-box { };
+  oppo-sans = pkgs.callPackage ./pkgs/oppo-sans { };
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
   # ...
 }
