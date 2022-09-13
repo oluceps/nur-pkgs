@@ -13,6 +13,7 @@ stdenvNoCC.mkDerivation rec {
     sha256 = "sha256-YrH9EhoT6EIS+tzIAaGzl5J8nYIkNR9bS5O7y0KzrRQ=";
   });
   
+  setSourceRoot = "sourceRoot=`pwd`";
   nativeBuildInputs = [ unzip ];
 
   installPhase = ''
