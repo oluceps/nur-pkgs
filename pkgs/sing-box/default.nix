@@ -14,7 +14,7 @@ buildGoModule rec {
     sha256 = "sha256-lbPsdvlUmLQjId9wpD2srW+Z7x37wRJ6pCO5jskEXhs=";
   };
 
-  vendorSha256 = lib.fakeSha256;
+  vendorSha256 = "sha256-nHtYTCd59rMIcstFjw62dxVH6CJl91yx9EBz2FrwSoo=";
 
   # Do not build testing suit
   excludedPackages = [ "./test" ];
