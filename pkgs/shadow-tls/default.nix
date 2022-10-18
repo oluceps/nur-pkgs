@@ -5,13 +5,13 @@
 }:
 
 let
-  fenix = import
-    (fetchTarball {
-      url = "https://github.com/nix-community/fenix/archive/main.tar.gz";
-      sha256 = "sha256:11fv5w0093l2v9v6l5m87al8yf8c2m05fchbw2kadrvh40kb49ii";
-    })
-    { system = "x86_64-linux"; };
-  rustPlatform = pkgs.makeRustPlatform { inherit (fenix.minimal) cargo rustc; };
+  #fenix = import
+#    (fetchTarball {
+#      url = "https://github.com/nix-community/fenix/archive/main.tar.gz";
+#      sha256 = "sha256:11fv5w0093l2v9v6l5m87al8yf8c2m05fchbw2kadrvh40kb49ii";
+#    })
+#    { system = "x86_64-linux"; };
+  rustPlatform = pkgs.makeRustPlatform { inherit (pkgs.fenix.minimal) cargo rustc; };
 in
 rustPlatform.buildRustPackage rec{
   pname = "shadow-tls";
