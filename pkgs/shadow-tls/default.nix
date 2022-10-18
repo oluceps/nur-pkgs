@@ -8,7 +8,7 @@ let
   fenix = import
     (fetchTarball {
       url = "https://github.com/nix-community/fenix/archive/main.tar.gz";
-      sha256 = "sha256:1l0j43iks97lk70s3zb43vfbbjf1j1x2nrpbfx559xfv0ivn45br";
+      sha256 = "sha256:11fv5w0093l2v9v6l5m87al8yf8c2m05fchbw2kadrvh40kb49ii";
     })
     { system = "x86_64-linux"; };
   rustPlatform = pkgs.makeRustPlatform { inherit (fenix.minimal) cargo rustc; };
