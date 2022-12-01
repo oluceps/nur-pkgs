@@ -5,16 +5,16 @@
 }:
 buildGoModule rec {
   pname = "sing-box";
-  version = "1.1-beta12";
+  version = "1.1-rc1";
 
   src = fetchFromGitHub {
     owner = "SagerNet";
     repo = "sing-box";
-    rev = "ffd54eef6c71a4e847d53fb38d3622d689ea026d";
-    sha256 = "sha256-vhbvg8WCKJcszwlBHD4dZA4bswevI5VBjurMzKK4VLU=";
+    rev = "f687c25fa9e604750e3e97ce7cdfba732f4d4dbf";
+    sha256 = "sha256-SHFPxUUe0KZ0JWs9Nu828bq7xi0GzQn4ulkMnFgGWhA=";
   };
 
-  vendorSha256 = "sha256-Wx0fiIZ3CgHFp/sWPCoot4h3IqQg59qsUlvR2Onw+2E=";
+  vendorSha256 = "sha256-4grprnEt6ckTVPCgYy6EgEjHR8hXeV1/BJNWkmC6clw=";
 
   # Do not build testing suit
   excludedPackages = [ "./test" ];
