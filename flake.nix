@@ -22,7 +22,7 @@
         };
       in
       {
-        packages = import ./default.nix {
+        packages = import ./flake-default.nix {
           inherit pkgs;
         };
       });
