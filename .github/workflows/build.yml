@@ -3,13 +3,12 @@ on:
   pull_request:
   push:
     branches:
-      - main
       - master
   schedule:
     # rebuild everyday at 2:51
     # TIP: Choose a random time here so not all repositories are build at once:
     # https://www.random.org/clock-times/?num=1&earliest=01%3A00&latest=08%3A00&interval=5&format=html&rnd=new
-    - cron:  '51 2 * * *'
+    - cron:  '55 9 * * *'
 jobs:
   tests:
     strategy:
@@ -35,7 +34,7 @@ jobs:
           - nur-pkgs
         nixPath:
           - nixpkgs=channel:nixos-unstable
-#          - nixpkgs=channel:nixpkgs-unstable
+          - nixpkgs=channel:nixpkgs-unstable
 #          - nixpkgs=channel:nixos-22.05
     runs-on: ubuntu-latest
     steps:
@@ -58,15 +57,15 @@ jobs:
         name: ${{ matrix.cachixName }}
         signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-#    - name: Check evaluation
-#      run: |
-#        nix-env -f . -qa \* --meta --xml \
-#          --allowed-uris https://static.rust-lang.org \
-#          --option restrict-eval true \
-#          --option allow-import-from-derivation true \
-#          --drv-path --show-trace \
-#          -I nixpkgs=$(nix-instantiate --find-file nixpkgs) \
-#          -I $PWD
+    - name: Check evaluation
+      run: |
+        nix-env -f . -qa \* --meta --xml \
+          --allowed-uris https://static.rust-lang.org \
+          --option restrict-eval true \
+          --option allow-import-from-derivation true \
+          --drv-path --show-trace \
+          -I nixpkgs=$(nix-instantiate --find-file nixpkgs) \
+          -I $PWD
     - name: Build nix packages
       run: nix shell -f '<nixpkgs>' nix-build-uncached -c nix-build-uncached ci.nix -A cacheOutputs
     - name: Trigger NUR update
