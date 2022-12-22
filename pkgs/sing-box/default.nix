@@ -14,7 +14,9 @@ buildGoModule rec {
     sha256 = "sha256-CNy+C5E5iAZHZ7PsS0Hj43irCuCvy/bes3kovvH81/o=";
   };
 
-  vendorSha256 = "sha256-fUHfvqzbu2P7N413dDuV41myhReNSYvgF+Cc6SgG6y4=";
+  vendorSha256 = "sha256-ge0ONnY6CnQs9Mj/nzDcEg25I6qjldl1wKlCylUX1To=";
+
+  proxyVendor = true;
 
   # Do not build testing suit
   excludedPackages = [ "./test" ];
@@ -25,6 +27,8 @@ buildGoModule rec {
     "-X github.com/sagernet/sing-box/constant.Commit=${version}"
   ];
   
+  CGO_ENABLED = 1;
+
   tags = [
     "with_quic"
     "with_grpc"
@@ -36,7 +40,6 @@ buildGoModule rec {
     "with_lwip"
   ];
 
-  CGO_ENABLED = 1;
   doCheck = false;
 
   meta = with lib; {
