@@ -5,16 +5,16 @@
 }:
 buildGoModule rec {
   pname = "sing-box";
-  version = "1.1-1";
+  version = "1.1-2";
 
   src = fetchFromGitHub {
     owner = "SagerNet";
     repo = "sing-box";
-    rev = "8afb8ca7eb8aa52e7a3b44253be0f3df9474fa64";
-    sha256 = "sha256-CNy+C5E5iAZHZ7PsS0Hj43irCuCvy/bes3kovvH81/o=";
+    rev = "v${version}";
+    sha256 = "sha256-FbW2h/muCk/vAItYHYRA/DFFPQvmTqNq74XUZQkUXaA=";
   };
 
-  vendorSha256 = "sha256-ge0ONnY6CnQs9Mj/nzDcEg25I6qjldl1wKlCylUX1To=";
+  vendorSha256 = "sha256-kJE+1bekIpv36cG0/Gi25kjnJmTjTp6lt344kFCUSXI=";
 
   proxyVendor = true;
 
