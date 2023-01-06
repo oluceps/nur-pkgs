@@ -34,6 +34,7 @@ in
   tuic = callPackage ./pkgs/tuic {inherit fenix; };
   techmino = callPackage ./pkgs/techmino { };
   naiveproxy = callPackage ./pkgs/naiveproxy { };
+  chatgpt = callPackage ./pkgs/chatgpt { };
   # ... 
 
 }
