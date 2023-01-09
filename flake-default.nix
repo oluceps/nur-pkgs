@@ -23,7 +23,7 @@
   tuic = pkgs.callPackage ./pkgs/tuic { };
   techmino = pkgs.callPackage ./pkgs/techmino { };
   naiveproxy = pkgs.callPackage ./pkgs/naiveproxy { };
-  chatgpt = callPackage ./pkgs/chatgpt { };
+#  chatgpt = pkgs.callPackage ./pkgs/chatgpt { };
 
   # ...
 }

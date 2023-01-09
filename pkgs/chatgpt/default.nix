@@ -16,10 +16,10 @@ rustPlatform.buildRustPackage rec {
     rev = "v${version}";
     owner = "lencx";
     repo = pname;
-    hash = lib.fakeSha256;
+    hash = "sha256-7ns8oiYTPfVwRSLJbny1gxPxqnwZqcy0XuPLR2skj/M=";
   };
 
-  cargoHash = lib.fakeSha256;
+  cargoHash = lib.fakeHash;
 
   # nativeBuildInputs = [ pkg-config ];
 
