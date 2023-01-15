@@ -29,7 +29,7 @@ let
         '';
         license = licenses.ofl;
         platforms = platforms.all;
-#        maintainers = with maintainers; [ oluceps ];
+        maintainers = with maintainers; [ oluceps ];
       };
 
     };
@@ -37,14 +37,14 @@ in
 {
   Mono-v5 = maple-font {
     pname = "MapleMono";
-    version = "5.5";
-    sha256 = "sha256-xkZ9NefjWHPjWNW8LGM8CgT2Zrg4j1evvx1K56sUzR8=";
+    version = "6.0";
+    sha256 = "";
     desc = "monospace";
   };
   Mono-NF-v5 = maple-font {
     pname = "MapleMono-NF";
-    version = "5.5";
-    sha256 = "sha256-cPVGuH1CSfnRvQ4ehBvOVno7CT6Popc1Nnpcn5uJoQY=";
+    version = "6.0";
+    sha256 = "";
     desc = "Nerd Font";
   };
 
