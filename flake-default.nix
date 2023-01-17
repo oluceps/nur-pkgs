@@ -24,6 +24,7 @@
   techmino = pkgs.callPackage ./pkgs/techmino { };
   naiveproxy = pkgs.callPackage ./pkgs/naiveproxy { };
 #  chatgpt = pkgs.callPackage ./pkgs/chatgpt { };
+  dm-sflc-modules = pkgs.clalPackage ./pkgs/dm-sflc-modules { };
 
   # ...
 }
