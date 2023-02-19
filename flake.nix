@@ -5,7 +5,7 @@
     rust-overlay.url = "github:oxalica/rust-overlay";
     flake-utils.url = "github:numtide/flake-utils";
     fenix = {
-      url = github:nix-community/fenix;
+      url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -17,7 +17,7 @@
           inherit system;
           overlays = [
             rust-overlay.overlays.default
-            fenix.overlay
+            fenix.overlays.default
           ];
         };
       in

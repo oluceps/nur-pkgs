@@ -1,20 +1,21 @@
-{ lib
+{ stdenv
+, lib
 , fetchFromGitHub
 , buildGoModule
-,
+, buildPackages
 }:
 buildGoModule rec {
   pname = "sing-box";
-  version = "1.1.2";
+  version = "1.1.5";
 
   src = fetchFromGitHub {
     owner = "SagerNet";
     repo = "sing-box";
     rev = "v${version}";
-    sha256 = "sha256-FbW2h/muCk/vAItYHYRA/DFFPQvmTqNq74XUZQkUXaA=";
+    sha256 = "sha256-FEwyJL6pFdp9vXIq1TUFGGDfKefFsVaajjX2U0R5Vog=";
   };
 
-  vendorSha256 = "sha256-6s4NH3YN0bn9scfSBX0nwu05ZCr5BqNTGp23gwhA9H4=";
+  vendorHash = "sha256-3rq5DZO1pBQEJ7ook9AAe/swMc3VAO+5BwR7IfTvF44=";
 
   proxyVendor = true;
 
@@ -26,7 +27,7 @@ buildGoModule rec {
     "-w"
     "-X github.com/sagernet/sing-box/constant.Commit=${version}"
   ];
-  
+
   CGO_ENABLED = 1;
 
   tags = [
@@ -40,12 +41,22 @@ buildGoModule rec {
     "with_lwip"
   ];
 
+  subPackages = [
+    "cmd/sing-box"
+  ];
+  postInstall = let emulator = stdenv.hostPlatform.emulator buildPackages; in ''
+    installShellCompletion --cmd sing-box \
+      --bash <(${emulator} $out/bin/sing-box completion bash) \
+      --fish <(${emulator} $out/bin/sing-box completion fish) \
+      --zsh  <(${emulator} $out/bin/sing-box completion zsh )
+  '';
+
   doCheck = false;
 
   meta = with lib; {
     description = "sing-box";
     homepage = "https://github.com/SagerNet/sing-box";
     license = licenses.gpl3Only;
-#    maintainers = with maintainers; [ oluceps ];
+    #    maintainers = with maintainers; [ oluceps ];
   };
 }

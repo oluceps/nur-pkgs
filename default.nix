@@ -16,7 +16,7 @@ let
   overlays = import ./overlays; # nixpkgs overlays
   system = "x86_64-linux";
   callPackage = pkgs.legacyPackages.${system}.callPackage;
-  fenix = (builtins.getFlake (builtins.toString ./.)).inputs.fenix.packages.${system};
+  # fenix = (builtins.getFlake (builtins.toString ./.)).inputs.fenix.packages.${system};
 
 in
 {
@@ -30,8 +30,8 @@ in
   maple-font = callPackage ./pkgs/maple-font { };
   # surrealdb = callPackage ./pkgs/surrealdb { };  
   maoken-tangyuan = callPackage ./pkgs/maoken-tangyuan { };
-  shadow-tls = callPackage ./pkgs/shadow-tls {inherit fenix; };
-  tuic = callPackage ./pkgs/tuic {inherit fenix; };
+  # shadow-tls = callPackage ./pkgs/shadow-tls {inherit fenix; };
+  # tuic = callPackage ./pkgs/tuic {inherit fenix; };
   techmino = callPackage ./pkgs/techmino { };
   naiveproxy = callPackage ./pkgs/naiveproxy { };
 #  chatgpt = callPackage ./pkgs/chatgpt { };

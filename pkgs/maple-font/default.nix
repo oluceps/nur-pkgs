@@ -35,17 +35,25 @@ let
     };
 in
 {
-  Mono-v5 = maple-font {
+  Mono = maple-font {
     pname = "MapleMono";
-    version = "6.0";
-    sha256 = "";
+    version = "6.1";
+    sha256 = "sha256-JWyZH2F9lwWt9ROhuOtVf8HIjUAWkhCbXium0iNQry8=";
     desc = "monospace";
   };
-  Mono-NF-v5 = maple-font {
+
+  NF = maple-font {
     pname = "MapleMono-NF";
-    version = "6.0";
-    sha256 = "";
+    version = "6.1";
+    sha256 = "sha256-z0qoPMvowasHRK1IUMnx+lufUXqZkT3WBLtpEkP4V4I=";
     desc = "Nerd Font";
+  };
+
+  SC-NF = maple-font {
+    pname = "MapleMono-SC-NF";
+    version = "6.1";
+    sha256 = "sha256-cp7pASXEiP8Td8yR+5hKpZyTST0o0pxgck4llHps4go=";
+    desc = "Nerd Font SC";
   };
 
 }
