@@ -6,18 +6,12 @@
 # commands such as:
 #     nix-build -A mypackage
 
-{ pkgs }:
-
+{ pkgs ? import <nixpkgs> { } }:
+ 
 # The `lib`, `modules`, and `overlay` names are special
 let
-
-  lib = import ./lib { inherit pkgs; }; # functions
-  modules = import ./modules; # NixOS modules
-  overlays = import ./overlays; # nixpkgs overlays
-  system = "x86_64-linux";
-  callPackage = pkgs.legacyPackages.${system}.callPackage;
+  callPackage = pkgs.callPackage;
   # fenix = (builtins.getFlake (builtins.toString ./.)).inputs.fenix.packages.${system};
-
 in
 {
   Graphite-cursors = callPackage ./pkgs/Graphite-cursors { };
