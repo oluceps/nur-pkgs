@@ -21,8 +21,5 @@
       in
       {
         packages = import ./default.nix { flake-enabled = true; inherit pkgs; };
-        # packages = import ./flake-default.nix {
-          # inherit pkgs;
-        # };
       });
 }
