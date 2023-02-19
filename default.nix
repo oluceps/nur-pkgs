@@ -6,11 +6,11 @@
 # commands such as:
 #     nix-build -A mypackage
 
-{ pkgs ? import <nixpkgs> { } }:
- 
+
+{ ... }:
 # The `lib`, `modules`, and `overlay` names are special
 let
-  callPackage = pkgs.callPackage;
+  callPackage = (import <nixpkgs> { }).callPackage;
   # fenix = (builtins.getFlake (builtins.toString ./.)).inputs.fenix.packages.${system};
 in
 {
@@ -28,7 +28,7 @@ in
   # tuic = callPackage ./pkgs/tuic {inherit fenix; };
   techmino = callPackage ./pkgs/techmino { };
   naiveproxy = callPackage ./pkgs/naiveproxy { };
-#  chatgpt = callPackage ./pkgs/chatgpt { };
+  #  chatgpt = callPackage ./pkgs/chatgpt { };
   # ... 
 
 }
