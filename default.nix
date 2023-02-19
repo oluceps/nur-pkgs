@@ -7,11 +7,13 @@
 #     nix-build -A mypackage
 
 
-{ ... }:
+{ pkgs ? import <nixpkgs> { }, flake-enabled ? false }:
 # The `lib`, `modules`, and `overlay` names are special
 let
-  callPackage = (import <nixpkgs> { }).callPackage;
-  # fenix = (builtins.getFlake (builtins.toString ./.)).inputs.fenix.packages.${system};
+  callPackage =
+    if flake-enabled
+    then pkgs.callPackage
+    else (import <nixpkgs> { }).callPackage;
 in
 {
   Graphite-cursors = callPackage ./pkgs/Graphite-cursors { };
