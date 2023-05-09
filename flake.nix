@@ -12,23 +12,25 @@
     let
       systems = [
         "x86_64-linux"
-        "i686-linux"
-        "x86_64-darwin"
-        "aarch64-linux"
-        "armv6l-linux"
-        "armv7l-linux"
+        # "i686-linux"
+        # "x86_64-darwin"
+        # "aarch64-linux"
+        # "armv6l-linux"
+        # "armv7l-linux"
       ];
-      forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f system);
+      genSystems = nixpkgs.lib.genAttrs systems;
     in
     {
-      packages = forAllSystems (system:
-        import ./default.nix {
-          pkgs = import nixpkgs {
+
+      pkgs = genSystems
+        (system:
+          import nixpkgs {
             inherit system;
             overlays = [ fenix.overlays.default ];
-          };
-          flake-enabled = true;
-        });
-    }
-  ;
+          }
+        );
+      packages = genSystems (system: import ./default.nix { flake-enabled = true; });
+    };
 }
+
+
