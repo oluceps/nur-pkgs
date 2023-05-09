@@ -12,7 +12,7 @@
 let
   lib = pkgs.lib;
   ifFlake = m: n: if flake-enabled then m else n;
-  callPackage = ifFlake pkgs.callPackage (import <nixpkgs> { }).callPackage;
+  callPackage = ifFlake pkgs.callPackage ((import (builtins.getFlake ./flake.nix).nixpkgs { })).callPackage;
   genPkgs = names: lib.genAttrs names (name: callPackage ./pkgs/${name} { });
   general = genPkgs
     [
@@ -21,7 +21,7 @@ let
       # "rustplayer"
       # "naiveproxy"
       "techmino"
-      "oppo-sans"
+      # "oppo-sans"
       "maoken-tangyuan"
       "plangothic"
       "v2ray-plugin"
