@@ -19,8 +19,6 @@
         # "armv7l-linux"
       ];
       genSystems = nixpkgs.lib.genAttrs systems;
-    in
-    {
 
       pkgs = genSystems
         (system:
@@ -29,7 +27,10 @@
             overlays = [ fenix.overlays.default ];
           }
         );
-      packages = genSystems (system: import ./default.nix { flake-enabled = true; });
+    in
+    {
+      inherit pkgs;
+      packages = genSystems (system: import ./default.nix { flake-enabled = true; _pkgs = pkgs.${system}; });
     };
 }
 
