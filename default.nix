@@ -23,7 +23,7 @@ let
       # "rustplayer"
       # "naiveproxy"
       "techmino"
-      # "oppo-sans"
+      "oppo-sans"
       "maoken-tangyuan"
       "plangothic"
       "v2ray-plugin"
