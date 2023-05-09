@@ -7,14 +7,14 @@
 #     nix-build -A mypackage
 
 
-{ _pkgs ? null, flake-enabled ? false }:
+{ pkgs ? null, flake-enabled ? false }:
 # The `lib`, `modules`, and `overlay` names are special
 let
   # /home/riro/Src/ github:oluceps
-  pkgs = if flake-enabled then _pkgs else (import ((builtins.getFlake "github:oluceps/nur-pkgs").inputs.nixpkgs) { system = "x86_64-linux"; });
-  lib = pkgs.lib;
+  realPkgs = if flake-enabled then pkgs else (import ((builtins.getFlake "github:oluceps/nur-pkgs").inputs.nixpkgs) { system = "x86_64-linux"; });
+  lib = realPkgs.lib;
   ifFlake = m: n: if flake-enabled then m else n;
-  callPackage = pkgs.callPackage;
+  callPackage = realPkgs.callPackage;
   genPkgs = names: lib.genAttrs names (name: callPackage ./pkgs/${name} { });
   general = genPkgs
     [

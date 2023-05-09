@@ -30,7 +30,7 @@
     in
     {
       inherit pkgs;
-      packages = genSystems (system: import ./default.nix { flake-enabled = true; _pkgs = pkgs.${system}; });
+      packages = genSystems (system: import ./default.nix { flake-enabled = true; pkgs = pkgs.${system}; });
     };
 }
 
