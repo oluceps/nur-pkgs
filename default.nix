@@ -11,7 +11,7 @@
 # The `lib`, `modules`, and `overlay` names are special
 let
   # /home/riro/Src/ github:oluceps
-  pkgs = (builtins.getFlake "github:oluceps/nur-pkgs").pkgs.x86_64-linux;
+  pkgs = import ((builtins.getFlake "github:oluceps/nur-pkgs").inputs.nixpkgs) { system = "x86_64-linux"; };
   lib = pkgs.lib;
   ifFlake = m: n: if flake-enabled then m else n;
   callPackage = pkgs.callPackage;
