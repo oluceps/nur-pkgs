@@ -4,7 +4,7 @@
 }:
 
 stdenv.mkDerivation rec {
-  pname = "LxgwNeoXiHei";
+  pname = "lxgw-neo-xihei";
   version = "1.100";
   src = fetchurl {
     url = "https://github.com/lxgw/LxgwNeoXiHei/releases/download/v${version}/LXGWNeoXiHei.ttf";
