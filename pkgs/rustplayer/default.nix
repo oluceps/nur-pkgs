@@ -26,14 +26,12 @@ rustPlatform.buildRustPackage rec {
     hash = "sha256-x82EdA7ezCzux1C85IcI2ZQ3M95sH6/k97Rv6lqc5eo=";
   };
 
-
-
   cargoLock = {
     lockFile = ./Cargo.lock;
-    # outputHashes = {
-    # };
+    outputHashes = {
+      "ffmpeg-sys-next-4.4.0" = "sha256-TBgf+J+ud7nnVjf0r98/rujFPEayjEaVi+vnSE6/5Ak=";
+    };
   };
-
 
   nativeBuildInputs = [
     pkg-config
@@ -54,8 +52,10 @@ rustPlatform.buildRustPackage rec {
     libtheora
   ];
 
-  # network required
-  doCheck = false;
+  checkFlags = [
+    # network required
+    "--skip=fetch_and_play"
+  ];
 
   meta = with lib; {
     homepage = "https://github.com/Kingtous/RustPlayer";
