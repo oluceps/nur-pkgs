@@ -4,7 +4,7 @@
 , pkg-config
 , openssl
 , alsa-lib
-, ffmpeg
+, ffmpeg_4
 , libvdpau
 , soxr
 , xvidcore
@@ -26,7 +26,14 @@ rustPlatform.buildRustPackage rec {
     hash = "sha256-x82EdA7ezCzux1C85IcI2ZQ3M95sH6/k97Rv6lqc5eo=";
   };
 
-  cargoHash = "sha256-1oxiojSgwTApdV1nK4c7UDvPiKqt6cxVPHlnS5isJZA=";
+
+
+  cargoLock = {
+    lockFile = ./Cargo.lock;
+    # outputHashes = {
+    # };
+  };
+
 
   nativeBuildInputs = [
     pkg-config
@@ -36,7 +43,7 @@ rustPlatform.buildRustPackage rec {
   buildInputs = [
     alsa-lib
     openssl
-    ffmpeg
+    ffmpeg_4
     libvdpau
     libogg
     soxr
